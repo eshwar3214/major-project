@@ -162,13 +162,13 @@ class Controller:
         return dist
     
     def changesystembrightness():
-        currentBrightnessLv = sbcontrol.get_brightness()/100.0
+        currentBrightnessLv = sbcontrol.get_brightness()[0]/100.0
         currentBrightnessLv += Controller.pinchlv/50.0
         if currentBrightnessLv > 1.0:
             currentBrightnessLv = 1.0
         elif currentBrightnessLv < 0.0:
-            currentBrightnessLv = 0.0       
-        sbcontrol.fade_brightness(int(100*currentBrightnessLv) , start = sbcontrol.get_brightness())
+            currentBrightnessLv = 0.0      
+        sbcontrol.fade_brightness(int(100*currentBrightnessLv), start = sbcontrol.get_brightness()[0])
     
     def changesystemvolume():
         devices = AudioUtilities.GetSpeakers()
